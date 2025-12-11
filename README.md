@@ -153,7 +153,7 @@ Total Improvement: +1.5 points
 - Score extraction via regex parsing of judge responses
 - Modular design allows easy swapping of storyteller/judge prompts
 
-## Samples Prompt
+## Sample Prompt
 - A peaceful story about a cloud floating gently through the sky
 - A child discovers they can speak to fairies in the garden
 - A story about a child lost in a dark forest with monsters chasing them
