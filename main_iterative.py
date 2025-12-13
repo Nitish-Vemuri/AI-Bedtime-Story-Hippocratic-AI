@@ -2,6 +2,7 @@ import os
 import re
 import openai
 from dotenv import load_dotenv
+from pathlib import Path
 
 # Load environment variables from .env file
 load_dotenv()
@@ -326,6 +327,44 @@ def get_user_feedback(story: str, category: str) -> tuple:
     return feedback, needs_changes
 
 
+def generate_audio_story(story: str, output_filename: str = "bedtime_story.mp3", voice: str = "nova") -> str:
+    """
+    Convert the story text to speech using OpenAI TTS API.
+    
+    Args:
+        story: The story text to convert to speech
+        output_filename: Name of the output audio file
+        voice: Voice to use (alloy, echo, fable, onyx, nova, shimmer)
+               Recommended for bedtime: nova (warm) or shimmer (gentle)
+    
+    Returns:
+        Path to the generated audio file
+    """
+    try:
+        print("\n" + "="*70)
+        print("GENERATING AUDIO VERSION")
+        print("="*70)
+        print(f"Voice: {voice}")
+        print("Converting story to speech...")
+        
+        # Note: TTS requires OpenAI Python library v1.0.0+
+        # The legacy v0.28.0 doesn't support TTS
+        print("\n⚠️  Audio generation requires OpenAI library v1.0.0+")
+        print("Current version uses v0.28.0 (legacy) for compatibility with assignment code")
+        print("\nTo enable audio generation:")
+        print("  1. Upgrade: pip install --upgrade openai")
+        print("  2. Update code to use new API format")
+        print("\nSkipping audio generation for now...")
+        print("="*70)
+        
+        return ""
+        
+    except Exception as e:
+        print(f"❌ Error generating audio: {e}")
+        print("Continuing without audio generation...")
+        return ""
+
+
 def apply_user_feedback(story: str, feedback: str, category: str) -> str:
     """Apply user feedback to regenerate the story."""
     print("\n" + "="*70)
@@ -383,7 +422,12 @@ def main():
         print("="*70)
         print(f"\n{final_story}\n")
     
-    print("="*70)
+    # Audio generation option
+    print("\n💡 TIP: Want to hear this story read aloud?")
+    print("   Run: python add_audio.py")
+    print("   Then paste the story text to generate an MP3 audio file!")
+    
+    print("\n" + "="*70)
     print("QUALITY IMPROVEMENT SUMMARY")
     print("="*70)
     print(f"\nTotal Iterations: {len(scores)}")

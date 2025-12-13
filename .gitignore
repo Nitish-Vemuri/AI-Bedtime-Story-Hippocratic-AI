@@ -1,6 +1,10 @@
 # Environment variables
 .env
 
+# Generated audio files
+*.mp3
+*.wav
+
 # Python
 __pycache__/
 *.py[cod]
